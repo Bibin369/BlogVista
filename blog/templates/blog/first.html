@@ -1,0 +1,186 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<!-- ADDITIONAL STYLING -->
+
+<style>
+  body {
+      background-color: #fff;
+  }
+
+  .carousel-caption {
+      background-color: rgba(128, 128, 128, 0.7); /* Grey background color with 70% opacity */
+      padding: 10px;
+      border-radius: 5px;
+  }
+
+  .carousel-caption p {
+      font-weight: bold;
+      color: white; /* Text color for the caption */
+  }
+
+  /* Add some styling for the scrolling text container */
+  .scrolling-text-container {
+      overflow: hidden;
+  }
+
+  .scrolling-text-container p {
+      margin: 10px 0;
+  }
+
+  /* Adjust the speed of the carousel transition */
+  .carousel-inner {
+      transition-duration: 1s; /* Adjust the duration as needed (e.g., 0.3s for a faster transition) */
+  }
+
+  .update-item {
+    margin-bottom: 10px;
+}
+
+.update-message {
+    font-weight: bold;
+}
+
+.update-date {
+    color: #888;
+    font-size: 12px;
+}
+
+</style>
+
+
+<div>
+
+  <!-- Page Hero with Image Carousel-->
+  <section class="page-header page-header-light bg-white mt-4 container-fluid p-0">
+    <div class="row align-items-center">
+      <div class="col-lg-8" data-aos="fade-up">
+        <!-- Your existing carousel code goes here -->
+        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="https://content-writing-india.com/blog/wp-content/uploads/2018/03/1080px.jpg" alt="First slide">
+              <div class="carousel-caption d-none d-md-block">
+                <p> "Unlocking the Power of Words: Crafting Compelling Content for Successful Blogging"</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="https://www.salesforce.com/ca/blog/wp-content/uploads/sites/12/2023/10/anatomy-of-a-blog-post-open-graph.jpg" alt="Second slide">
+              <div class="carousel-caption d-none d-md-block">
+                <p> "Navigating the Digital Landscape: Strategies for Boosting Your Blog's Visibility and Impact"</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2022/03/what-is-a-blog-1.webp" alt="Third slide">
+              <div class="carousel-caption d-none d-md-block">
+                <p> "The Art of Blogging: From Ideas to Execution, Creating a Platform That Resonates"</p>
+              </div>
+            </div>
+            <!-- Add more carousel items with different images and captions as needed -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Card on the right side with scrolling sentences -->
+      <div class="col-lg-4">
+        <div class="card mt-4">
+          <div class="card-body text-center">
+            <h5 class="card-title"><b>Latest Updates</b></h5>
+            <div class="scrolling-text-container">
+                <marquee direction="up" scrollamount="8" behavior="scroll" height="325">
+                    <ul>
+                        {% for update in updates %}
+                        <li>
+                            <div class="update-item">
+                                <span class="update-message">{{ update.message }}</span>
+                                <span class="update-date">{{ update.created_at|date:"F d, Y H:i" }}</span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </marquee>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+    </div>
+    
+
+      <div class="page-header-content pt-5">
+          <div class="container-fluid">
+              <div class="row align-items-center">
+                  <div class="col-lg-12" data-aos="fade-up">
+                      <h1 style="" class="page-header-title font-weight-bold text-center">"Elevate your blog's influence with a stunning makeover! Transform your online presence and captivate audiences like never before."</h1>
+                      
+                      <p class="page-header-text text-center mb-5">
+                         <h5> "Explore a world of captivating stories, insightful perspectives, and valuable knowledge on our blog website. Unleash your curiosity and join a community of passionate readers and writers as we embark on a journey of discovery together."</h5>
+                      </p>
+
+                      {% if user.is_authenticated %}
+                      <a class="btn btn-lg btn-primary font-weight-bold mr-2 rounded-pill px-4 py-2" href="{% url 'posts-follow-view' %}">Get Started</a>
+                      <a class="btn btn-lg btn-primary-soft text-primary font-weight-bold" href="#"><i class="far fa-check-circle"></i>&nbsp;LOGGED IN</a>
+                      {% else %}
+                      
+                      <div class="d-flex justify-content-center">
+                        <a class="btn btn-lg btn-primary font-weight-bold mr-2 rounded-pill px-5 py-3" href="{% url 'register' %}">REGISTER</a>
+                        <a class="btn btn-lg btn-danger font-weight-bold mr-2 rounded-pill px-5 py-3" href="{% url 'account_login' %}">LOGIN</a>
+                    </div>
+                      {% endif %}
+                      
+
+                      <!-- Footer -->
+<footer class="page-header page-header-light bg-white mt-4 container">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-3 col-md-6">
+              <h3>Contact Us</h3>
+              <p>
+                  <strong>Email:</strong> bibin@gmail.com<br>
+                  <strong>Phone:</strong> 91 1122334455
+              </p>
+          </div>
+          <div class="col-lg-2 col-md-6">
+              <h4>Quick Links</h4>
+              <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="{% url 'blog-about' %}">About</a></li>
+                  <li><a href="{% url 'register' %}">Register</a></li>
+              </ul>
+          </div>
+          <div class="col-lg-7 col-md-12">
+              <h4>About Our Blog</h4>
+              <p>
+                  Explore our blog for insightful articles, captivating stories, and valuable knowledge. Join our community of passionate readers and writers on a journey of discovery.
+              </p>
+          </div>
+      </div>
+  </div>
+</footer>
+
+<!-- End Footer -->
+                  </div>
+              </div>
+          </div>
+      </div>
+      <br>
+  </section>
+
+</div>
+
+<script>
+  // Activate the carousel
+  $(document).ready(function () {
+      $('#carouselExample').carousel();
+  });
+</script>
+
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,84 @@
+{% extends 'users/admin_base.html' %}
+{% block main %}
+
+<style>
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+/* Rounded border */
+hr.rounded {
+  border-top: 8px solid lightblue;
+  border-radius: 5px;
+}
+
+.prjdiv:hover {
+  transform: translateY(-10px);
+}
+
+div .container1 {
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+}
+
+h2, h4 {
+  padding: 10px;
+}
+
+/* Added styles for a professional look */
+.card {
+  text-align: center;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body h4 {
+  margin: 10px 0;
+}
+
+.card-body h5 {
+  font-weight: bold;
+  color: #333;
+}
+</style>
+
+<div class="row mt-4">
+  <div class="col-sm-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <i class="fas fa-users fa-3x text-success"></i>
+        <h4 class="mt-2">Total Users</h4>
+        <h5 class="mb-0">{{ total_users }}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <i class="fas fa-file-alt fa-3x text-success"></i>
+        <h4 class="mt-2">Total Posts</h4>
+        <h5 class="mb-0">{{ total_posts }}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

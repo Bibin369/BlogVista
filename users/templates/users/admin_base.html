@@ -1,0 +1,161 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>Blog Management System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}">
+    <script src="{% static 'js/myjs.js' %}"></script>
+</head>
+<body>
+
+<!--vertical navbar start-->
+
+<div class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-1 bg-light">
+        <!--align media objects (like images or videos) together with content
+        To create a flexbox container and to transform direct children into flex items, use the d-flex class
+        -->
+        <center><h4 class="font-weight-bold text-uppercase px-3 small dashboard-text"><span style="color: green">Blog Application</span> <span style="color: rgb(132, 0, 255)"> Management</span></h4></center>
+
+        <div class="media d-flex align-items-center">
+
+            <img src="https://img.freepik.com/free-photo/toy-bricks-table_144627-48267.jpg" width="80" height="80"
+                 class="mr-3 rounded-circle img-thumbnail shadow-sm">
+
+            <div class="media-body">
+
+                <h4 class="mb-0">Admin</h4>
+                <!-- <p class="text-muted mb-0">{{request.user.email}}</p> -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--.flex-column to display the flex items vertically (on top of each other)-->
+    <ul class="nav flex-column bg-white">
+        <li class="nav-item">
+            <a href="{% url 'admin_home' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-tachometer-alt fa-fw mr-3 text-primary"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'send_update' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-atlas mr-3 text-primary fa-fw"></i>Send Announcement 
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'manage_updates' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-atlas mr-3 text-primary fa-fw"></i>Manage Announcement 
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'register_and_list_users' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-atlas mr-3 text-primary fa-fw"></i>Manage Users
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'view_posts' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-atlas mr-3 text-primary fa-fw"></i>Manage Posts
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'contact_us_details' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-atlas mr-3 text-primary fa-fw"></i>Enquires
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'change_password' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-cog mr-3 text-primary fa-fw"></i>
+                Change Password
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'admin_logout' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-power-off mr-3 text-primary fa-fw"></i>
+                Logout
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+<!--vertical navbar end-->
+
+<!--page content holder-->
+<div class="page-content p-4" id="content">
+
+    <a href="{% url 'admin_logout' %}" title="logout" class="float-right text-white"><i class="fas fa-power-off fa-2x"></i></a>
+
+    <!-- <div class="container">
+        <div class="dropdown">
+            <a href="" class="float-right text-white pr-3 dropdown-toggle" id="menu1" data-toggle="dropdown"><span
+                    class="badge badge-danger"></span><i class="fas fa-bell fa-2x"> </i>
+
+            </a>
+            <span class="caret"></span>
+            <ul class="dropdown-menu bg-light text-danger">
+                <li class="text-secondary" style="text-align : center">New Bookings</li>
+
+                <a href="#">
+                    <li style="padding:10px"> <span class="text-muted">
+                                        <em></em>
+                                    </span></li>
+                </a>
+
+                <li style="text-align : center">No Records Found</li>
+
+
+                <li style="padding:10px"><a href="#" class="btn btn-primary" style="width:100%">View
+                    All</a></li>
+            </ul>
+        </div>
+    </div> -->
+    <script>
+        $(document).ready(function(){
+            $(".dropdown-toggle").dropdown();
+        });
+
+    </script>
+
+    <!--toggle btn-->
+    <!-- <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4">
+        <i class="fas fa-bars mr-2"></i>
+        <small class="text-uppercase font-weight-bold">Toggle</small>
+    </button>
+    end toggle btn -->
+
+
+    {% block main %}
+
+    {% endblock %}
+
+</div>
+<!--end page content holder-->
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends 'users/admin_base.html' %}
+{% block main  %}
+
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 800px;">
+        <article class="card-body">
+            <header class="mb-4">
+                <h4 class="card-title">Registered Users</h4>
+            </header>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>S/L</th>
+                        <th>ID</th>
+                        <!-- <th>Profile Image</th> -->
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Action</th>  <!-- Add this column for delete action -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ user.id }}</td>
+                        <!-- <td><img src="{{ user.profile.image.url }}" alt="Profile Image" style="max-width: 40px; max-height: 40px;"></td> -->
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <a href="{% url 'delete_blog_user' user.id %}" 
+                               onclick="return confirm('Are you sure to delete this user?')"
+                               class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </article>
+    </div>
+</div>
+{% endblock %}

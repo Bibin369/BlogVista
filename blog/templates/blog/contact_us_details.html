@@ -1,0 +1,35 @@
+{% extends 'users/admin_base.html' %}
+{% block main %}
+
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 800px;">
+        <article class="card-body">
+            <header class="mb-4">
+                <h4 class="card-title">Enquiries</h4>
+            </header>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>S/L</th>
+                        <th>Name</th>
+                        <th>Problem Description</th>
+                        <th>Date Added</th>
+                        <th>Time Added</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.problem }}</td>
+                        <td>{{ contact.date_added|date:"d/m/y" }}</td>
+                        <td>{{ contact.time_added|time:"H:i:s" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </article>
+    </div>
+</div>
+{% endblock %}

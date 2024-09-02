@@ -1,0 +1,55 @@
+{% extends 'users/admin_base.html' %}
+{% block main %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-primary">
+                <div class="card-header bg-info text-white">
+                    <h2 class="text-center">Send Announcement</h2>
+                </div>
+                <div class="card-body">
+                    <form id="updateForm" method="post" action="{% url 'send_update' %}">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="id_message">Update Message:</label>
+                            <input type="text" class="form-control" id="id_message" name="message" placeholder="Enter update message" required>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary">Send Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Custom JavaScript for form submission and redirect -->
+<script>
+    $(document).ready(function() {
+        $('#updateForm').submit(function (e) {
+            e.preventDefault();
+            // Custom form submission logic here (e.g., AJAX request)
+
+            // Customized alert message
+            alert('Update sent successfully!');
+
+            // Delay before redirecting to updates display page
+            setTimeout(function() {
+                location.reload();
+            }, 3000);  // 3000 milliseconds (3 seconds) delay
+        });
+    });
+</script>
+{% endblock %}

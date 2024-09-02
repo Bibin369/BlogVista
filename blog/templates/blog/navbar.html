@@ -1,0 +1,139 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <style>
+    .navbar {
+      min-height: 60px;
+      background: linear-gradient(to right, #53a1f3, #e84e4e);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      margin-right: 20px;
+    }
+
+    .navbar-nav .nav-link {
+      color: #ffffff;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ffffff;
+    }
+
+    .form-inline .form-control {
+      width: auto;
+    }
+
+    .navbar-toggler {
+      margin-left: 10px;
+    }
+
+    .btn-light {
+      background-color: #ffffff;
+      color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-light:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+
+    .dropdown-menu {
+      background-color: #343a40;
+    }
+
+    .dropdown-item {
+      color: #ffffff;
+    }
+
+    .dropdown-item:hover {
+      background-color: #007bff;
+    }
+
+    /* Updated logo styles */
+    .navbar-brand .logo-text {
+      font-size: 24px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+      width: auto;
+    }
+  </style>
+   <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="https://i.ibb.co/QJhzJkm/Screenshot-2024-03-14-005340-removebg-preview.png" alt="Logo">
+          BlogVista
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+          <ul class="navbar-nav mr-auto">
+              <!-- SEARCHBAR -->
+              <li class="nav-item">
+                  <form class="form-inline my-2 my-lg-0" method="GET" action="/search">
+                      <input required name="query" class="form-control mr-sm-2" type="text" placeholder="Search">
+                      <button class="btn btn-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                  </form>
+              </li>
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'blog-home' %}">Blogs</a>
+              </li>
+
+              {% if user.is_authenticated %}
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Posts
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{% url 'post-create' %}"><i class="fas fa-plus-circle"></i>&nbsp;&nbsp;New Post</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'all-like' %}">Liked Posts</a>
+                      <a class="dropdown-item" href="{% url 'all-save' %}">Saved Posts</a>
+                      <a class="dropdown-item" href="{% url 'blog-home' %}">All Posts</a>
+                      <a class="dropdown-item" href="{% url 'user-posts' user %}">My Posts</a>
+                      <a class="dropdown-item" href="{% url 'posts-follow-view'%}">Feeds</a>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'show-notifications' %}">Notifications</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'chatbot' %}">BlogWizard</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img class="rounded-circle" style="height: 20px; width: 20px;" src="{{user.profile.image.url}}" alt="">&nbsp;{{user|truncatechars:"10"}}
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="{% url 'profile-detail-view' user.id %}"><i class="far fa-user"></i>&nbsp;&nbsp;Profile</a>
+                      <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-sliders-h"></i>&nbsp;&nbsp;Update</a>
+                      <a class="dropdown-item" href="{% url 'contact_us' %}"><i class="fas fa-envelope"></i>&nbsp;&nbsp;ReachUs</a>
+                      <a class="dropdown-item" href="{% url 'blog-about' %}"><i class="fas fa-info-circle"></i>&nbsp;&nbsp;AboutUs</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'admin_logout' %}"><i class="fas fa-power-off"></i>&nbsp;&nbsp;Logout</a>
+                  </div>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog-about' %}">About</a>
+            </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'register' %}">Register</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'admin_login' %}">Admin</a>
+              </li>
+              {% endif %}
+          </ul>
+      </div>
+  </div>
+</nav>

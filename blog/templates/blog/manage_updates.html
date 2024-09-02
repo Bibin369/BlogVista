@@ -1,0 +1,47 @@
+{% extends 'users/admin_base.html' %}
+{% block main %}
+
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 800px;">
+        <article class="card-body">
+            <header class="mb-4">
+                <h4 class="card-title">Manage Announcement </h4>
+            </header>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>S/L</th>
+                        <th>Message</th>
+                        <th>Date Created</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for update in updates %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ update.message }}</td>
+                        <td>{{ update.created_at|date:"d/m/Y H:i:s" }}</td>
+                        <td>
+                            <form id="deleteForm{{ update.id }}" method="post" action="{% url 'delete_update' update.id %}">
+                                {% csrf_token %}
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ update.id }}')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </article>
+    </div>
+</div>
+
+<script>
+    function confirmDelete(updateId) {
+        if (confirm("Are you sure you want to delete this update?")) {
+            document.getElementById("deleteForm" + updateId).submit();
+        }
+    }
+</script>
+
+{% endblock %}

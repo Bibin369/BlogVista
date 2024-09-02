@@ -1,0 +1,40 @@
+{% extends 'users/admin_base.html' %}
+{% block main %}
+
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 1800px;">
+        <article class="card-body">
+            <header class="mb-4">
+                <h4 class="card-title">All Posts</h4>
+            </header>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>S/L</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Author</th>
+                        <th>Action</th>  <!-- Add this column for delete action -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in posts %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.content }}</td>
+                        <td>{{ post.author.username }}</td>
+                        <td>
+                            <form action="{% url 'delete_post' post.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this post?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </article>
+    </div>
+</div>
+{% endblock %}

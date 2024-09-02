@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to BlogVista</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #01070c;
+      border-radius: 10px;
+      background-color: #ffffffb7;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .header img {
+        width: 80%; /* Stretch image to the width of its container */
+        max-width: 200px; /* Set maximum width to maintain aspect ratio */
+    }
+    .message {
+      margin-bottom: 20px;
+      
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://st2.depositphotos.com/1350793/9161/i/450/depositphotos_91612518-stock-photo-blog-concept-with-man-holding.jpg" alt="BlogVista Logo">
+      <h1>Welcome to BlogVista - Unleash Your Creativity! </h1>
+    </div>
+    <div class="message">
+      <p>Thank you for joining BlogVista,  <strong>{{ user_first_name }}</strong> <strong>{{ user_last_name }}</strong>! 🎉🎉🎉</p>
+      <p>We are thrilled to welcome you to our vibrant community of bloggers. Get ready to unleash your creativity, share your thoughts, and connect with fellow enthusiasts. Your journey at BlogVista is guided by our dedicated admin. Feel free to reach out to admin for any assistance or questions you may have.</p>
+      <p>Start your blogging journey now and inspire the world with your unique perspective.</p>
+      <p>Your UserName is, <strong>{{ user_username }}</strong></p>
+      <p>Happy blogging!</p>
+    </div>
+    <div class="footer">
+      <p><strong>Best regards</strong></p>
+      <p><strong>Bibin Thomas(Admin)</strong></p>
+      <p><strong>The BlogVista Team</strong></p>
+    </div>
+  </div>
+</body>
+</html>
